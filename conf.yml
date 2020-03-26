@@ -1,0 +1,5 @@
+MYSQL:
+  host: localhost
+  user: root
+  password: root
+  db: sv_scraper
