@@ -3,7 +3,6 @@
 OPTS=(
   --env FLASK_APP=sv_dashboard
   --env FLASK_ENV=development
-  --env SV_DASHBOARD_CONF=conf.yml
   --access-logfile -
   --error-logfile -
   --log-level debug

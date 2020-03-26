@@ -37,21 +37,28 @@
  </head>
  <body>
   <div class="btn-container">
-   <button type="button" class="btn btn-primary btn-resume">Resume</button>
-   <button type="button" class="btn btn-primary btn-start">Restart</button>
-   <button type="button" class="btn btn-primary btn-refresh">Refresh</button>
    <button type="button" class="btn btn-primary btn-export">Export to CSV</button>
   </div>
   <table id="tbl_corps" class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
    <thead>
     <tr>
-     <th>Corporation Name</th>
+     <th>Title</th>
+     <th>Price</th>
+     <th>Section</th>
+     <th>Row</th>
+     <th>Quantity</th>
+     <th>Seat Numbers</th>
     </tr>
    </thead>
    <tbody>
-    {% for corps in listings %}
+    {% for listing in s_listings %}
     <tr>
-     <td>{{ corps.corp_name }}</td>
+     <td>{{ listing.title }}</td>
+     <td>{{ listing.price }}</td>
+     <td>{{ listing.section }}</td>
+     <td>{{ listing.row }}</td>
+     <td>{{ listing.quantity }}</td>
+     <td>{{ listing.num }}</td>
     </tr>
     {% endfor %}
    </tbody>
