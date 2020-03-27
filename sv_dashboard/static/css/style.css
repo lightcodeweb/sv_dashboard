@@ -2,17 +2,14 @@ body {
     padding: 20px !important;
     height: auto;
 }
-.btn-container {
+.container {
     padding-top: 30px;
     padding-bottom: 20px;
-    text-align: right;
+    text-align: left;
 }
-#tbl_corps thead th {
-    text-align: center
+#tbl_listings thead th {
+    /* text-align: center; */
 }
-.btn-start {
-    display: none;
-}
-.btn-resume {
-    display: none;
+.btn-export {
+    float: right;
 }

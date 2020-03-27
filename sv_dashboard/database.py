@@ -27,6 +27,23 @@ class Database:
                          '`url` VARCHAR(400), '
                          'PRIMARY KEY (`id`))')
 
+    def get_titles(self):
+        query = "SELECT DISTINCT `title` FROM `listings`"
+        self.cur.execute(query)
+        result = self.cur.fetchall()
+        titles = []
+
+        for listing in result:
+            titles.append(listing["title"])
+
+        return titles
+
+    def get_listings_by_title_brand(self, title, brand):
+        query = "SELECT * FROM `listings` WHERE `title`=%s AND `brand`=%s"
+        self.cur.execute(query, (title, brand))
+        result = self.cur.fetchall()
+        return result
+
     def get_listings_by_brand(self, brand):
         self.cur.execute(f"SELECT * FROM `listings` WHERE `brand`={brand}")
         result = self.cur.fetchall()

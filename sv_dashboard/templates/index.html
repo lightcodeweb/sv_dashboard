@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="{{url_for('static', filename='assets/global/css/bootstrap-extend.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='assets/css/site.min.css')}}">
   <!-- Plugins -->
+  <link rel="stylesheet" href="{{url_for('static', filename='assets/global/vendor/bootstrap-select/bootstrap-select.min.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='assets/global/vendor/datatables-bootstrap/dataTables.bootstrap.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='assets/global/vendor/datatables-fixedheader/dataTables.fixedHeader.css')}}">
   <link rel="stylesheet" href="{{url_for('static', filename='assets/global/vendor/datatables-responsive/dataTables.responsive.css')}}">
@@ -22,6 +23,7 @@
   <script src="{{url_for('static', filename='assets/global/vendor/jquery/jquery.min.js')}}"></script>
   <script src="{{url_for('static', filename='assets/global/vendor/bootstrap/bootstrap.min.js')}}"></script>
   <!-- Plugins -->
+  <script src="{{url_for('static', filename='assets/global/vendor/bootstrap-select/bootstrap-select.min.js')}}"></script>
   <script src="{{url_for('static', filename='assets/global/vendor/datatables/jquery.dataTables.js')}}"></script>
   <script src="{{url_for('static', filename='assets/global/vendor/datatables-fixedheader/dataTables.fixedHeader.js')}}"></script>
   <script src="{{url_for('static', filename='assets/global/vendor/datatables-bootstrap/dataTables.bootstrap.js')}}"></script>
@@ -36,31 +38,29 @@
   <script src="{{url_for('static', filename='js/index.js')}}"></script>
  </head>
  <body>
-  <div class="btn-container">
+  <div class="container">
+   <select class="event-title">
+    {% for title in titles %}
+    <option value="{{ title }}">{{ title }}</option>
+    {% endfor %}
+   </select>
+   <select class="event-brand">
+    <option value=0>Stubhub</option>
+    <option value=1>VividSeats</option>
+   </select>
    <button type="button" class="btn btn-primary btn-export">Export to CSV</button>
   </div>
-  <table id="tbl_corps" class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
+  <table id="tbl_listings" class="table table-hover dataTable table-striped width-full" data-plugin="dataTable">
    <thead>
     <tr>
-     <th>Title</th>
-     <th>Price</th>
      <th>Section</th>
      <th>Row</th>
+     <th>Price</th>
      <th>Quantity</th>
      <th>Seat Numbers</th>
     </tr>
    </thead>
    <tbody>
-    {% for listing in s_listings %}
-    <tr>
-     <td>{{ listing.title }}</td>
-     <td>{{ listing.price }}</td>
-     <td>{{ listing.section }}</td>
-     <td>{{ listing.row }}</td>
-     <td>{{ listing.quantity }}</td>
-     <td>{{ listing.num }}</td>
-    </tr>
-    {% endfor %}
    </tbody>
   </table>
  </body>

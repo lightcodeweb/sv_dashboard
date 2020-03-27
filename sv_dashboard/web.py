@@ -15,10 +15,25 @@ def get_app():
 @APP.route('/<path:path>')
 def index(path=None):
     db = Database(CFG)
+    titles = db.get_titles()
+    return render_template(
+        'index.html',
+        titles=titles
+    )
 
-    s_listings = db.get_listings_by_brand("0")
-    v_listings = db.get_listings_by_brand("1")
-    return render_template('index.html', s_listings=s_listings, v_listings=v_listings)
+
+@APP.route('/get_listings', methods=['POST'])
+def get_listings():
+    json_data = request.get_json()
+    title = json_data.get("title")
+    brand = json_data.get("brand")
+    db = Database(CFG)
+    listings = db.get_listings_by_title_brand(title, brand)
+
+    return json.dumps({
+        "success": True,
+        "listings": listings
+    })
 
 
 @APP.route('/get_events', methods=['POST'])
