@@ -11,6 +11,22 @@ function Init() {
         },
         autoWidth: false
     });
+
+    $('#tbl_listings thead tr').clone().appendTo('#tbl_listings thead');
+    $('#tbl_listings thead tr:eq(1) th').each(function(i) {
+        const title = $(this).text();
+        $(this).removeClass('sorting_asc sorting');
+        $(this).html('<input type="text" class="form-control" placeholder="Search ' + title + '" />');
+
+        $('input', this).on('keyup change', function() {
+            if (table.column(i).search() !== this.value) {
+                table.column(i).search(this.value).draw();
+                $(this).focus();
+            }
+        });
+    });
+
+
     $('.btn-export').click(() => {
         downloadCSV();
     });
