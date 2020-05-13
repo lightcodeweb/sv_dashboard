@@ -47,8 +47,6 @@ function brandChanged() {
 }
 
 function reloadTable() {
-    table.clear().draw();
-
     $.ajax({
         url: '/get_listings',
         method: 'POST',
@@ -58,6 +56,8 @@ function reloadTable() {
             brand: $('.event-brand option:selected').val()
         }),
         success: (data) => {
+            table.clear().draw();
+
             data = JSON.parse(data);
 
             if (data.success) {
